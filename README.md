@@ -22,7 +22,7 @@ see recovery.img
 
 # Device Tree for Samsung Galaxy A30 (SM-A305F)
 
-Device Tree Made by topser99
+Device Tree update by Zero!
 
 
 ## Device Picture

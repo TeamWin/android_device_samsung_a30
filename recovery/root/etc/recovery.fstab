@@ -1,23 +1,51 @@
-# mount point   fstype  device                                 device2  	   flags
 #
-/cache           ext4  /dev/block/platform/13500000.dwmmc0/by-name/cache    flags=backup=0;display="Cache"
-/data            ext4  /dev/block/platform/13500000.dwmmc0/by-name/userdata flags=encryptable=footer,length=-20480
-/efs             ext4  /dev/block/platform/13500000.dwmmc0/by-name/efs      flags=backup=1;display="EFS"
-/omr             ext4  /dev/block/platform/13500000.dwmmc0/by-name/omr      flags=backup=0;display="OMR"
-/product         ext4  /dev/block/platform/13500000.dwmmc0/by-name/product  flags=backup=1;wipeingui;display="Product"
-/system_root     ext4  /dev/block/platform/13500000.dwmmc0/by-name/system   flags=backup=1;wipeingui;display="System"
-/vendor          ext4  /dev/block/platform/13500000.dwmmc0/by-name/vendor   flags=backup=1;wipeingui;display="Vendor"
+# Copyright (C) 2018 The TwrpBuilder Open-Source Project
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+# http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+#
 
-/boot            emmc  /dev/block/platform/13500000.dwmmc0/by-name/boot     flags=backup=1;flashimg;display="Boot"
-/recovery        emmc  /dev/block/platform/13500000.dwmmc0/by-name/recovery flags=backup=1;flashimg;display="Recovery"
-/dtb_image       emmc  /dev/block/platform/13500000.dwmmc0/by-name/dtb      flags=backup=0;flashimg;display="DT Image"
-/dtbo_image      emmc  /dev/block/platform/13500000.dwmmc0/by-name/dtbo     flags=backup=0;flashimg;display="DTBO Image"
-/omr_image       emmc  /dev/block/platform/13500000.dwmmc0/by-name/omr      flags=backup=0;flashimg;display="OMR Image"
-/product_image   emmc  /dev/block/platform/13500000.dwmmc0/by-name/product  flags=backup=0;flashimg;display="Product Image"
-/system_image    emmc  /dev/block/platform/13500000.dwmmc0/by-name/system   flags=backup=0;flashimg;display="System Image"
-/vendor_image    emmc  /dev/block/platform/13500000.dwmmc0/by-name/vendor   flags=backup=0;flashimg;display="Vendor Image"
+# Mount point		FStype					Device													Flags
+/efs          ext4        /dev/block/platform/13500000.dwmmc0/by-name/efs           /dev/block/mmcblk0p3      flags=display="Efs";backup=1;flashimg=1
+/sec_efs      ext4        /dev/block/platform/13500000.dwmmc0/by-name/sec_efs       /dev/block/mmcblk0p4      flags=display="Sec_Efs";backup=1;flashimg=1
+
+/boot         emmc        /dev/block/platform/13500000.dwmmc0/by-name/boot          /dev/block/mmcblk0p15     flags=display="Boot";backup=1;flashimg=1
+/recovery     emmc        /dev/block/platform/13500000.dwmmc0/by-name/recovery      /dev/block/mmcblk0p16     flags=display="Recovery";backup=1;flashimg=1
+
+/cache        ext4        /dev/block/platform/13500000.dwmmc0/by-name/cache         /dev/block/mmcblk0p28     flags=display="Cache";canbewiped;wipeingui;wipeduringfactoryreset
+/system       ext4        /dev/block/platform/13500000.dwmmc0/by-name/system        /dev/block/mmcblk0p25     flags=display="System";backup=1;canbewiped;wipeingui
+/data         ext4        /dev/block/platform/13500000.dwmmc0/by-name/userdata      /dev/block/mmcblk0p32     flags=length=-20480;display="Data";backup=1
+
+/modem        emmc        /dev/block/platform/13500000.dwmmc0/by-name/radio         /dev/block/mmcblk0p19     flags=display="Modem";backup=1;flashimg=1
+/vendor       ext4        /dev/block/platform/13500000.dwmmc0/by-name/vendor        /dev/block/mmcblk0p26     flags=display="Vendor";backup=1;flashimg=1
+/misc         emmc        /dev/block/platform/13500000.dwmmc0/by-name/misc          /dev/block/mmcblk0p14     flags=display="Misc";backup=1;flashimg=1
+
+/cpefs        ext4        /dev/block/platform/13500000.dwmmc0/by-name/cpefs         /dev/block/mmcblk0p5      flags=display="Cpefs";backup=1;flashimg=1
+/product      ext4        /dev/block/platform/13500000.dwmmc0/by-name/product       /dev/block/mmcblk0p27     flags=display="Product";backup=1;flashimg=1
+
+/dtb          emmc        /dev/block/platform/13500000.dwmmc0/by-name/dtb           /dev/block/mmcblk0p17     flags=display="Dtb";backup=1;flashimg=1
+/dtbo         emmc        /dev/block/platform/13500000.dwmmc0/by-name/dtbo          /dev/block/mmcblk0p18     flags=display="Dtbo";backup=1;flashimg=1
+
+/cp_debug     emmc        /dev/block/platform/13500000.dwmmc0/by-name/cp_debug      /dev/block/mmcblk0p30     flags=display="Cp_debug";backup=1;flashimg=1
+/vbmeta       emmc        /dev/block/platform/13500000.dwmmc0/by-name/vbmeta        /dev/block/mmcblk0p22     flags=display="Vbmeta";backup=1;flashimg=1
+
+/param        ext4        /dev/block/platform/13500000.dwmmc0/by-name/param         /dev/block/mmcblk0p12     flags=display="Param";backup=1;flashimg=1
+/omr          ext4        /dev/block/platform/13500000.dwmmc0/by-name/omr           /dev/block/mmcblk0p29     flags=display="Omr";backup=1;flashimg=1
+# /persistent   emmc        /dev/block/platform/13500000.dwmmc0/by-name/persistent    /dev/block/mmcblk0p20     flags=display="Persistent";backup=1
 
 #external SDcard
 #
-/external_sd     vfat  /dev/block/mmcblk1p1         /dev/block/mmcblk1      flags=storage;wipeingui;removable
-/usb-otg         vfat  /dev/block/sda1              /dev/block/sda          flags=storage;wipeingui;removable;display="USB-OTG"
+/external_sd  auto        /dev/block/platform/13550000.dwmmc2/mmcblk1p1             /dev/block/platform/13550000.dwmmc2/mmcblk1      flags=display="Micro SDcard";storage;wipeingui;removable;settingsstorage;backup=0;encryptable=userdata
+/usbotg       auto        /dev/block/sda1                                           /dev/block/sda                                   flags=display="USB-OTG";backup=0;wipeingui;storage;removable
+# auto          vfat        /devices/mtk-msdc.0/11230000.msdc0*                   defaults        voldmanaged=sdcard0:auto
+# auto          auto        /devices/mtk-msdc.0/11240000.msdc1*                   defaults        voldmanaged=sdcard1:auto;noemulatedsd;encryptable=userdata
+# auto          vfat        /devices/platform/mt_usb*                             defaults        voldmanaged=usbotg:auto
